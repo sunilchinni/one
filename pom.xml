@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
@@ -11,102 +12,52 @@
     <version>8.8.3</version>
     <packaging>war</packaging>
 
-    <name>Java Home MyWeb Application</name>
-    <description>A user-friendly web application built with modern Java practices</description>
-    <url>https://your-app-url.com</url>
+    <name>Java Home myweb</name>
+    <url>https://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        
-        <!-- Java Version -->
+
+        <!-- Build old application code using Java 8 compatibility -->
         <maven.compiler.release>8</maven.compiler.release>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
 
-        <!-- Docker Configuration -->
         <docker.image.prefix>kammana</docker.image.prefix>
-        <docker.image.name>${docker.image.prefix}/${project.artifactId}</docker.image.name>
-
-        <!-- SonarQube Configuration -->
         <sonar.host.url>http://18.181.164.81:9000</sonar.host.url>
-        <sonar.projectName>${project.name}</sonar.projectName>
-        <sonar.projectKey>${project.groupId}:${project.artifactId}</sonar.projectKey>
-
-        <!-- Frontend Dependencies (if using) -->
-        <frontend-maven-plugin.version>1.12.1</frontend-maven-plugin.version>
-        <node.version>v16.20.2</node.version>
-        <npm.version>8.19.4</npm.version>
     </properties>
 
     <dependencies>
-        <!-- Testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- Add Spring Boot for modern web UI (Optional) -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.7.18</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- Thymeleaf for modern HTML templates -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>2.7.18</version>
-        </dependency>
-
-        <!-- Bootstrap for responsive UI -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>5.3.2</version>
-        </dependency>
-
-        <!-- Font Awesome for icons -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>font-awesome</artifactId>
-            <version>6.5.1</version>
-        </dependency>
     </dependencies>
 
     <repositories>
-        <repository>
-            <id>flm-feed</id>
-            <url>https://pkgs.dev.azure.com/afsanabegummd00/MyFirstProject/_packaging/flm-feed/maven/v1</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
+             <repository>
+                    <id>flm-feed</id>
+                    <url>https://pkgs.dev.azure.com/afsanabegummd00/MyFirstProject/_packaging/flm-feed/maven/v1</url>
+                    <releases>
+                      <enabled>true</enabled>
+                      </releases>
+                      <snapshots>
+                               <enabled>true</enabled>
+                      </snapshots>
+              </repository>
     </repositories>
 
     <distributionManagement>
-        <repository>
-            <id>flm-feed</id>
-            <url>https://pkgs.dev.azure.com/afsanabegummd00/MyFirstProject/_packaging/flm-feed/maven/v1</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
+            <repository>
+  <id>flm-feed</id>
+  <url>https://pkgs.dev.azure.com/afsanabegummd00/MyFirstProject/_packaging/flm-feed/maven/v1</url>
+  <releases>
+    <enabled>true</enabled>
+  </releases>
+  <snapshots>
+    <enabled>true</enabled>
+  </snapshots>
+</repository>
         <snapshotRepository>
             <id>nexusRepo</id>
             <url>http://34.208.218.12:8081/repository/sample-snapshots/</url>
@@ -117,45 +68,27 @@
         <finalName>myweb</finalName>
 
         <plugins>
-            <!-- Resources Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.3.1</version>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                </configuration>
             </plugin>
 
-            <!-- Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
                     <release>8</release>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
 
-            <!-- Test Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
-                <configuration>
-                    <includes>
-                        <include>**/*Test.java</include>
-                    </includes>
-                    <excludes>
-                        <exclude>**/*IT.java</exclude>
-                    </excludes>
-                </configuration>
             </plugin>
 
-            <!-- WAR Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -164,37 +97,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-
-            <!-- Spring Boot Plugin for easy deployment -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.7.18</version>
-                <configuration>
-                    <mainClass>in.javahome.Application</mainClass>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Docker Build Plugin -->
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.4.13</version>
-                <configuration>
-                    <repository>${docker.image.name}</repository>
-                    <tag>${project.version}</tag>
-                    <buildArgs>
-                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-                    </buildArgs>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
+
 </project>
