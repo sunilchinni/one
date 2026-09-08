@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>K.V.Reddy Shop</title>
+    <title>Nexus Shop</title>
 
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
@@ -497,7 +497,7 @@
                     <li><a href="#">Home</a></li>
                     <li><a href="#categories">Categories</a></li>
                     <li><a href="#products">Trending</a></li>
-                    <li><a href="#deals">Deals</a></li>
+                    <li><a href="#deals">Winter Deals</a></li>
                 </ul>
             </div>
         </div>
